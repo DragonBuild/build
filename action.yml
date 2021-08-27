@@ -21,31 +21,19 @@ on:
       - 'dev/**'
 
 runs:
+  using: "composite"
   steps:
-  - uses: actions/checkout@v2
-  - name: Set up Python
-    uses: actions/setup-python@v2
-    with:
-      python-version: 3.9.5
-  - name: Install dependencies
-    run: |
-      python -m pip install --upgrade pip
-      pip install pyyaml ruyaml
-      pip install git+git://github.com/dragonbuild/dragon
-      brew install ldid
-      brew install ninja
-      brew install dpkg
-    shell: bash
-  - name: Install DragonBuild
-    run: |
-      dragon
-    shell: bash
-  - name: Building Project
-    run: |
-      dragon c b
-    shell: bash
-  - name: Uploading Packages
-    uses: actions/upload-artifact@v2.2.4
-    with:
-      name: packages.zip
-      path: packages/
+    - run: |
+        python3 -m pip install --upgrade pip
+        pip3 install pyyaml ruyaml
+        pip3 install git+git://github.com/dragonbuild/dragon
+        brew install ldid
+        brew install ninja
+        brew install dpkg
+      shell: bash
+    - run: |
+        dragon
+      shell: bash
+    - run: |
+        dragon c b
+      shell: bash
