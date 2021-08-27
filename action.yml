@@ -1,0 +1,48 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: dragon-build
+
+on:
+  push:
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+    branches:
+      - master
+      - 'dev/**'
+  pull_request:
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+    branches:
+      - master
+      - 'dev/**'
+
+jobs:
+  tests:
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9.5
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml ruyaml
+        pip install git+git://github.com/dragonbuild/dragon
+        brew install ldid
+        brew install ninja
+        brew install dpkg
+    - name: Install DragonBuild
+      run: |
+        dragon
+    - name: Building Project
+      run: |
+        dragon c b
+    - name: Uploading Packages
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: packages.zip
+        path: packages/
