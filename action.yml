@@ -28,7 +28,6 @@ runs:
         pip3 install pyyaml ruyaml
         pip3 install git+git://github.com/dragonbuild/dragon
         brew install ldid
-        brew install ninja
         brew install dpkg
       shell: bash
     - run: |
