@@ -25,9 +25,9 @@ runs:
   steps:
     - run: |
         python3 -m pip install --upgrade pip
-        pip3 install pyyaml ruyaml git+git://github.com/dragonbuild/dragon
+        pip3 install pyyaml ruyaml
+        pip3 install dragon
         brew install ldid
-        brew install ninja
         brew install dpkg
       shell: bash
     - run: |
