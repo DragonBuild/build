@@ -24,9 +24,9 @@ runs:
   using: "composite"
   steps:
     - run: |
+        brew install ldid
         python3 -m pip install --upgrade pip
         pip3 install dragon
-        brew install ldid
       shell: bash
     - run: |
         dragon
