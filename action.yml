@@ -32,5 +32,5 @@ runs:
         dragon
       shell: bash
     - run: |
-        dragon c b
+        dragon c b r
       shell: bash
