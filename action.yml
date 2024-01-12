@@ -36,6 +36,6 @@ runs:
         dragon
       shell: bash
     - run: |
-      working-directory: ./
-        dragon c b r
+       working-directory: ./
+       dragon c b r
       shell: bash
