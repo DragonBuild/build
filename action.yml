@@ -4,6 +4,12 @@
 name: dragon-build
 description: Build a package with dragon
 
+inputs:
+      rootless:
+        description: 'Default no'
+        required: false
+        default: no
+
 on:
   push:
     paths-ignore:
@@ -23,12 +29,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    inputs:
-      rootless:
-        description: 'Default no'
-        required: false
-        default: no
 
     steps:
       - name: Install dependencies
