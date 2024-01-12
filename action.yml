@@ -4,12 +4,6 @@
 name: dragon-build
 description: Build a package with dragon
 
-inputs:
-      rootless:
-        description: 'Default no'
-        required: false
-        default: no
-
 on:
   push:
     paths-ignore:
@@ -25,6 +19,12 @@ on:
     branches:
       - master
       - 'dev/**'
+
+    inputs:
+      rootless:
+        description: 'Default no'
+        required: false
+        default: no
 
 jobs:
   build:
