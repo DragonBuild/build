@@ -19,7 +19,12 @@ on:
     branches:
       - master
       - 'dev/**'
-
+inputs:
+   rootless:
+     description: 'Default no'
+     required: false
+     default: no
+    
 runs:
   using: "composite"
   steps:
