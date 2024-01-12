@@ -36,5 +36,6 @@ runs:
         dragon
       shell: bash
     - run: |
+        ls
         dragon c b r
       shell: bash
